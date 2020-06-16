@@ -52,7 +52,7 @@ public:
   // generic EKF update
   // z: measurement
   // H: Jacobian of observation function evaluated at the current estimated state
-  // R: observation error model covariance 
+  // R: observation error model covariance
   // zFromX: measurement prediction based on current state
   void Update(VectorXf& z, MatrixXf& H, MatrixXf& R, VectorXf& zFromX);
 
@@ -76,7 +76,7 @@ public:
 
 	float posErrorMag, velErrorMag;
 
-	virtual V3F EstimatedPosition() 
+	virtual V3F EstimatedPosition()
 	{
 		return V3F(ekfState(0), ekfState(1), ekfState(2));
 	}
@@ -97,4 +97,15 @@ public:
 	}
 
 	float CovConditionNumber() const;
+
+private:
+  enum State {
+    POSX = 0,
+    POSY,
+    POSZ,
+    VELX,
+    VELY,
+    VELZ,
+    YAW
+  };
 };
