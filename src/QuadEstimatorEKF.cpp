@@ -105,8 +105,7 @@ void QuadEstimatorEKF::UpdateFromIMU(V3F accel, V3F gyro)
   ekfState(6) = Q_new.Yaw();
 
   // normalize yaw to -pi .. pi
-  if (ekfState(6) > F_PI) ekfState(6) -= 2.f*F_PI;
-  if (ekfState(6) < -F_PI) ekfState(6) += 2.f*F_PI;
+  ekfState(6) = math_helper::recenterAngle(ekfState(6));
 
   /////////////////////////////// END STUDENT CODE ////////////////////////////
 
