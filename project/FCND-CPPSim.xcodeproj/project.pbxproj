@@ -49,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		98452C88249963FC00708F3F /* math_helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = math_helper.h; sourceTree = "<group>"; };
 		DB076C8A202A34C500386052 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		DB31989E20334078008ACD56 /* Simulation.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Simulation.txt; path = ../config/Simulation.txt; sourceTree = "<group>"; };
 		DB3198A320334078008ACD56 /* QuadPhysicalParams.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = QuadPhysicalParams.txt; path = ../config/QuadPhysicalParams.txt; sourceTree = "<group>"; };
@@ -226,6 +227,7 @@
 			children = (
 				DBD204F12036369000E0F55A /* QuadControl.h */,
 				DBD204F22036369000E0F55A /* QuadControl.cpp */,
+				98452C88249963FC00708F3F /* math_helper.h */,
 				DB56307720743A730070F86B /* QuadEstimatorEKF.h */,
 				DB56307520743A730070F86B /* QuadEstimatorEKF.cpp */,
 				DB56307620743A730070F86B /* BaseQuadEstimator.h */,

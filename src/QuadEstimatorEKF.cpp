@@ -3,18 +3,12 @@
 #include "Utility/SimpleConfig.h"
 #include "Utility/StringUtils.h"
 #include "Math/Quaternion.h"
+#include "math_helper.h"
 
 using namespace SLR;
 
 const int QuadEstimatorEKF::QUAD_EKF_NUM_STATES;
 
-namespace {
-template <typename T>
-T recenterAngle(T angle, T center = 0) {
-  center -= M_PI;
-  return angle - 2 * M_PI * floor((angle - center) / (2 * M_PI));
-}
-}
 
 QuadEstimatorEKF::QuadEstimatorEKF(string config, string name)
   : BaseQuadEstimator(config),
@@ -337,7 +331,7 @@ void QuadEstimatorEKF::UpdateFromMag(float magYaw)
   hPrime(0, YAW) = 1;
 
   // Normalize the angle about the current measurement to avoid wrapping issues.
-  zFromX(0) = recenterAngle(ekfState(6), z(0));
+  zFromX(0) = math_helper::recenterAngle(ekfState(6), z(0));
 
   /////////////////////////////// END STUDENT CODE ////////////////////////////
 
