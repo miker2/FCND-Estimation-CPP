@@ -8,6 +8,14 @@ using namespace SLR;
 
 const int QuadEstimatorEKF::QUAD_EKF_NUM_STATES;
 
+namespace {
+template <typename T>
+T recenterAngle(T angle, T center = 0) {
+  center -= M_PI;
+  return angle - 2 * M_PI * floor((angle - center) / (2 * M_PI));
+}
+}
+
 QuadEstimatorEKF::QuadEstimatorEKF(string config, string name)
   : BaseQuadEstimator(config),
   Q(QUAD_EKF_NUM_STATES, QUAD_EKF_NUM_STATES),
@@ -320,6 +328,10 @@ void QuadEstimatorEKF::UpdateFromMag(float magYaw)
   //  - The magnetomer measurement covariance is available in member variable R_Mag
   ////////////////////////////// BEGIN STUDENT CODE ///////////////////////////
 
+  hPrime(0, YAW) = 1;
+
+  // Normalize the angle about the current measurement to avoid wrapping issues.
+  zFromX(0) = recenterAngle(ekfState(6), z(0));
 
   /////////////////////////////// END STUDENT CODE ////////////////////////////
 
